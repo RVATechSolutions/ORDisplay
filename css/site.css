@@ -1,0 +1,42 @@
+/* Grey -  DDDCDF
+	Table Header - 006599
+	Alternating Color - DFF0F3
+	White - FFFFFF
+	Highligth - FFFF01
+*/
+.table-container{
+	padding:10px;
+	border-radius: 8px;
+	background: #DDDCDF;
+	margin: 3px;
+}
+
+.table-container table{
+	width:100%;
+	margin-bottom:0;
+	border-radius:8px;
+	
+}
+
+.truncate{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bottom{
+	position: fixed;
+	bottom: 0;
+	width: 100%
+}
+
+.ticker{
+	float:left;
+	width:1850px;
+}
+
+.time{
+	float:right;
+	width: 40px;
+	padding-right: 10px;
+}
