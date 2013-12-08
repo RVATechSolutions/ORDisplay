@@ -4,18 +4,79 @@
 	White - FFFFFF
 	Highligth - FFFF01
 */
+body{
+	background: #006699;
+	color: #00496B;
+	font-family: Antigua;
+}
+
+.header{
+	width:100%;
+	font-weight: bold;
+	font-size:48px;
+	color: white;
+	padding: 8px;
+	vertical-align:bottom;
+}
+
+.alert{
+	padding:8px;
+	background: yellow;
+}
+
 .table-container{
 	padding:10px;
 	border-radius: 8px;
 	background: #DDDCDF;
-	margin: 3px;
+	margin: 8px;
+	font-family: "Arial Black", Gadget, sans-serif;
 }
 
 .table-container table{
 	width:100%;
 	margin-bottom:0;
+	border-collapse: collapse;
 	border-radius:8px;
-	
+	table-layout:fixed;
+}
+
+.table-container table thead tr td{
+	color: white;
+	background: #006699;
+	padding: 0px 0px 0px 0px;
+}
+
+ .table-container table tbody tr td{
+	color: #006699;
+	padding: 0px 0px 0px 0px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+ .table-container table thead tr:nth-of-type(even){
+	border-top: solid 3px;
+}
+
+.table-container table thead tr:first-child td:last-child{
+	border-top-right-radius: 8px;
+}
+
+.table-container table thead tr:first-child td:first-child{
+	border-top-left-radius: 8px;
+}
+
+.table-container table tbody tr:last-child td:last-child{
+	border-bottom-right-radius: 8px;
+}
+
+.table-container table tbody tr:last-child td:first-child{
+	border-bottom-left-radius: 8px;
+}
+
+
+ .table-container table tr:nth-of-type(even) {
+	background: #E1EEF4 !important;
 }
 
 .truncate{
@@ -27,16 +88,29 @@
 .bottom{
 	position: fixed;
 	bottom: 0;
-	width: 100%
+	width: 100%;
+	background: black;
+	padding: 10px;
+	color: white;
+	font-family: "Arial Black", Gadget, sans-serif;
 }
 
 .ticker{
 	float:left;
-	width:1850px;
+	width:1500px;
+	overflow: hidden;
+}
+
+.ticker span{
+	padding-right: 40px;
 }
 
 .time{
 	float:right;
-	width: 40px;
-	padding-right: 10px;
+	width: 180px;
+	text-align: right;
+}
+
+.duplicateWarning{
+	background-color: yellow;
 }

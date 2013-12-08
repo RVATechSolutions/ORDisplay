@@ -5,38 +5,61 @@
     <title>OR Display</title>
     <link rel="stylesheet" href="css/foundation.css" />
     <script src="js/modernizr.js"></script>
-	<link rel="stylesheet" href="css/ticker-style.css"/>
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" href="css/site.css">
 	<script src='js/jquery.js'></script>
-	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<script src='js/knockout-latest.js'></script>
-	<script src='js/jquery.ticker.js'></script>
+	<script src='js/jquery.marquee.js'></script>
+	<script src='js/moment.min.js'></script>
 	<script src='js/main.js'></script>
 </head>
 <body>
+<div class="header">
+	<img src="img/logo.png"> Georgetown Memorial Hospital O.R. Schedule
+</div>
+<div class="truncate alert" data-bind="visible: Alert() != '', text: Alert"></div>
 <div data-bind="foreach: Rooms">
 	<div class='table-container'>
 		<table>
+			<colgroup>
+				<col style='width:70px;'>
+				<col style='width:120px;'>
+				<col style='width:120px;'>
+				<col style='width:70px;'>
+				<col style='width:300px;'>
+				<col style='width:300px;'>
+				<col>
+				<col style='width:300px;'>
+			</colgroup>
 			<thead>
 				<tr>
-					<td colspan="8">Header Stuff about the room</td>
+					<td colspan="2" data-bind="text:Name"></td>
+					<td colspan="2">
+						<div><span>Anes: </span><span data-bind="text: Anes"></span></div>
+						<div><span>CRNA: </span><span data-bind="text: CRNA"></span></div>
+					</td>
+					<td colspan="2">
+						<div><span>RN 1: </span><span data-bind="text: RN1"></span></div>
+						<div><span>RN 2: </span><span data-bind="text: RN2"></span></div>
+					</td>
+					<td colspan="2">
+						<div><span>Scrub 1: </span><span data-bind="text: Scrub1"></span></div>
+						<div><span>Scrub 2: </span><span data-bind="text: Scrub2"></span></div>
+					</td>
 				</tr>
-			</thead>
-			<thead>
 				<tr>
-					<td>Time</td><td>Surgeon</td><td>Patient</td><td>PT Type</td><td>Location</td><td>Procedure</td><td>Comments</td><td>Destination</td>
+					<td width="40px">Time</td><td>Surgeon</td><td>Patient</td><td>PT Type</td><td>Location</td><td>Procedure</td><td>Comments</td><td>Destination</td>
 				</tr>
 			</thead>
-			<tbody>
-				<tr data-bind="foreach: Appointments">
+			<tbody data-bind="if: Appointments.length == 0"><tr><td colspan="8">No procedures scheduled.</td></tr></tbody>
+			<tbody data-bind="foreach: Appointments">
+				<tr>
 					<td><span data-bind="text:Time"></span></td>
 					<td><span data-bind="text:Surgeon"></span></td>
-					<td><span data-bind="text:Patient"></span></td>
+					<td data-bind="text:Patient, css: {duplicateWarning: isDuplicatePatientName}"></td>
 					<td><span data-bind="text:PatType"></span></td>
-					<td><span data-bind="text:Location"></span></td>
+					<td data-bind="text:Location"></td>
 					<td><span data-bind="text:Procedure"></span></td>
-					<td><span data-bind="text:Comments"></span></td>
+					<td><img data-bind="attr:{src: Warnings}"/><span data-bind="text:Comments"></span></td>
 					<td><span data-bind="text:Destination"></span></td>
 				</tr>
 			</tbody>
@@ -44,8 +67,12 @@
 	</div>
 </div>
 <div class='bottom'>
-	<div class='time'>Time</div>
-	<div class='ticker'>News</div>
+	<div class='time'>- - : - - : - -  - - / - - / - - - - </div>
+	<div class='ticker' >
+		<div data-bind="foreach:News">
+			<span data-bind="text:$data"></span>
+		</div>
+	</div>
 </div>
 </body>
 </html>
